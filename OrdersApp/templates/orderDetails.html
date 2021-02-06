@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block body %}
+<div align="center">
+    <h1> طلبية رقم  : {{order.orderId}}</h1>
+    <P>موعد التسليم : {{order.deadLine}}</P>
+    <P>تاريخ الطلب : {{order.publishedAt}}</P>
+</div>
+<div>
+    <h3>اسم العميل : {{ customer.name }}</h3>
+    <p> رقم الهاتف : {{ customer.phone }} </p>
+    <p> العنوان :  {{ customer.address }} </p>
+</div>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">اسم الصنف</th>
+      <th scope="col">الكمية</th>
+      <th scope="col">سعر الوحدة </th>
+      <th scope="col"> الاجمالى</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for item  in itemsInOrder %}
+    
+    <tr>
+      <th scope="row">1</th>
+      <td>{{item.item.name}}</td>
+      <td>{{item.quantity}}</td>
+      <td>{{item.price}}</td>
+      <td>{{item.total}}</td>
+    </tr>
+
+  {% endfor %}
+    
+    
+  </tbody>
+</table>
+<a href="{% url 'orders' %}">
+  القائمة الرئيسية 
+</a>
+{% endblock body %}

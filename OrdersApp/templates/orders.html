@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block body %}
+{% for order in orders %}
+     <div class="card" >
+        <div class="card-body" align = center>
+            <h5 class="card-title">طلبية رقم : {{order.orderId}}</h5>
+            <h5>اسم العميل :{{order.customerName}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">موعد التسليم : {{order.orderDeadLine}}</h6>
+            <p class="card-text">الاصناف المطلوبة </p>
+            <p class="card-text">{{order.itemNames}}</p>
+            <a href="{% url 'orderDetails' id=order.orderId %}" class="card-link">التفاصيل</a>
+        </div>  
+    </div>
+
+{% endfor %}
+   
+{% endblock body %}
